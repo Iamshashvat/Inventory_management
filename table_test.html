@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function() {
+
+var dataPoints = [];
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title: {
+		text: "Daily Sales Data"
+	},
+	axisY: {
+		title: "Units",
+		titleFontSize: 24
+	},
+	data: [{
+		type: "column",
+		yValueFormatString: "#,### Units",
+		dataPoints: dataPoints
+	}]
+});
+
+var date_diff = function(date1, date2) {
+	var dt1 = new Date(date1);
+	var dt2 = new Date(date2);
+	var timeDiff = Math.abs(dt2.getTime() - dt1.getTime());
+	var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+	return diffDays;
+}
+
+
+function addData(data) {
+	for (var i = 0; i < data.length; i++) {
+		dataPoints.push({
+			y: date_diff( '11/15/2018', data[i].rdate) ,
+			label: " " + data[i].pname
+		});
+	}
+	chart.render();
+
+}
+
+
+$.getJSON("data.json", addData);
+
+
+
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>

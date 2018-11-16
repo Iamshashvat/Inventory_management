@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	zoomEnabled: true,
+	title:{
+		text: "Try Zooming and Panning"
+	},
+	axisY :{
+		includeZero:false
+	},
+	data: data  // random generator below
+});
+chart.render();
+
+}
+
+var limit = 1000;
+
+var y = 0;
+var data = [];
+var dataSeries = { type: "line" };
+var dataPoints = [];
+var temp=[];
+const Http=new XMLHttpRequest();
+const url='http://127.0.0.1:5000/keyboard/';
+Http.open("GET", url);
+Http.send();
+Http.onreadystatechange=(e)=>{
+	temp=JSON.parse(Http.responseText);
+	var limit=temp.length;
+	dataPoints=[];
+	for (var i = 1; i < limit; i += 100) {
+		//y += (Math.random() * 10 - 5);
+		console.log(temp[i]);
+		dataPoints.push({
+			x: parseInt(temp[i].quantity),
+			y: parseInt(temp[i].price)
+		});
+	}
+	dataSeries.dataPoints = dataPoints;
+	data.push(dataSeries);
+}
+
+</script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script></head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;">
+</div>
+</body>
+</html>

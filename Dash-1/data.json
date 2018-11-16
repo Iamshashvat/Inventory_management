@@ -1,0 +1,36 @@
+[ {
+  "product id": "1",
+  "pname": "laptop",
+  "quantity": "100",
+  "price per piece": "40000",
+  "rdate": "9/12/18",
+  "aged date": "12/11/18"
+}, {
+  "product id": "2",
+  "pname": "mouse",
+  "quantity": "400",
+  "price per piece": "150",
+  "rdate": "8/21/18",
+  "aged date": "14/11/18"
+}, {
+  "product id": "3",
+  "pname": "headphone",
+  "quantity": "300",
+  "price per piece": "400",
+  "rdate": "7/11/18",
+  "aged date": "15/11/18"
+}, {
+  "product id": "4",
+  "pname": "keyboard",
+  "quantity": "600",
+  "price per piece": "500",
+  "rdate": "10/10/18",
+  "aged date": "16/11/18"
+}, {
+  "product id": "5",
+  "pname": "bag",
+  "quantity": "550",
+  "price per piece": "420",
+  "rdate": "8/11/18",
+  "aged date": "17/11/18"
+}]
